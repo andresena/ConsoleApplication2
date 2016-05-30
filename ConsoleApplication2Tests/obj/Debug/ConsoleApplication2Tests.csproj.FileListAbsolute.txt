@@ -1,0 +1,9 @@
+C:\Users\André\Documents\Visual Studio 2015\Projects\ConsoleApplication2\ConsoleApplication2Tests\bin\Debug\ConsoleApplication2Tests.dll
+C:\Users\André\Documents\Visual Studio 2015\Projects\ConsoleApplication2\ConsoleApplication2Tests\bin\Debug\ConsoleApplication2Tests.pdb
+C:\Users\André\Documents\Visual Studio 2015\Projects\ConsoleApplication2\ConsoleApplication2Tests\bin\Debug\ConsoleApplication2.exe
+C:\Users\André\Documents\Visual Studio 2015\Projects\ConsoleApplication2\ConsoleApplication2Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\André\Documents\Visual Studio 2015\Projects\ConsoleApplication2\ConsoleApplication2Tests\bin\Debug\ConsoleApplication2.pdb
+C:\Users\André\Documents\Visual Studio 2015\Projects\ConsoleApplication2\ConsoleApplication2Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\André\Documents\Visual Studio 2015\Projects\ConsoleApplication2\ConsoleApplication2Tests\obj\Debug\ConsoleApplication2Tests.csprojResolveAssemblyReference.cache
+C:\Users\André\Documents\Visual Studio 2015\Projects\ConsoleApplication2\ConsoleApplication2Tests\obj\Debug\ConsoleApplication2Tests.dll
+C:\Users\André\Documents\Visual Studio 2015\Projects\ConsoleApplication2\ConsoleApplication2Tests\obj\Debug\ConsoleApplication2Tests.pdb

@@ -4,80 +4,78 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication2
+namespace ISBNnumber
 {
-    public class isbn
-    {   //attributes
+    public class ISBN
+    {
         private string isbnNum;
-        //method   
         public string GetIsbn()
         {
+            Console.WriteLine("isbnNum is:");
+            Console.WriteLine(isbnNum);
+            long num = 123456789;
+            bool test = Int64.TryParse(isbnNum, out num);            
+
+            while ((test == false) || (isbnNum.Length != 12))  //validate if isbnNum is a number and have 12 digits.
+            {                
+                Console.WriteLine("Type a number and with 12 digits:");
+                isbnNum = Console.ReadLine();
+                Console.WriteLine("Length is:");
+                Console.WriteLine(isbnNum.Length);
+                test = Int64.TryParse(isbnNum, out num);
+            }
             return this.isbnNum;
         }
-        //constructor
-        public isbn()
+
+        public ISBN()
         {
-            Console.Write("Enter Your ISBN Number: ");
-            this.isbnNum = Console.ReadLine();
+            Console.Write("Type a number with 12 digits:");
+            this.isbnNum = Console.ReadLine();            
+        }   
 
-        }//end default constructor
+        public static void Main(string[] args)
+        {  
+            ISBN trueisbn = new ISBN(); //constructor
 
-        //method
-        public string displayISBN()
-        {
+            string final_isbn = CheckDigit.CheckIsbn(trueisbn.GetIsbn());            
+            Console.WriteLine(final_isbn);
 
-            return this.GetIsbn();
-
-        }
-
-
-        public static void Main(string[] args)                             //começa aqui. void main.
-        {
-            //create a new instance of the ISBN/book class
-
-            isbn myFavoriteBook = new isbn();                             ////chama daqui !!!
-
-            //contains the method for checking validity 
-            bool isValid = CheckDigit.CheckIsbn(myFavoriteBook.GetIsbn());
-
-            //print out the results of the validity.
-            Console.WriteLine(string.Format("Your book {0} a valid ISBN",
-                                       isValid ? "has" : "doesn't have"));
-
-            Console.ReadLine();
-
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
         }
     }
 
-    public static class CheckDigit
-    {       // attributes
-        public static string NormalizeIsbn(string isbn)
+    public class CheckDigit
+    {
+        public static string CheckIsbn(string isbn)
         {
-            return isbn.Replace("-", "").Replace(" ", "");
-        }
-        public static bool CheckIsbn(string isbn) // formula to check ISBN's validity
-        {
-            if (isbn == null)
-                return false;
+            string ISBN = isbn.Substring(3);    //Remove the three first digits from the typed number.             
 
-            isbn = NormalizeIsbn(isbn);
-            if (isbn.Length != 10)
-                return false;
-
-            int result;
-            for (int i = 0; i < 9; i++)
-                if (!int.TryParse(isbn[i].ToString(), out result))
-                    return false;
+            char[] reverse = ISBN.ToCharArray();  // Reverse number to sum correctly.
+            Array.Reverse(reverse);
 
             int sum = 0;
-            for (int i = 0; i < 9; i++)
-                sum += (i + 1) * int.Parse(isbn[i].ToString());
 
-            int remainder = sum % 11;
-            if (remainder == 10)
-                return isbn[9] == 'X';
+            for (int i = 0; i < 9; i++)
+            {
+                sum += (i + 2) * int.Parse(reverse[i].ToString());
+            }
+
+            int extra_digit = 0;
+            extra_digit = (11 - (sum % 11)) % 11;
+            Console.WriteLine("Extra digit is:");
+            Console.WriteLine(extra_digit);
+
+            if (extra_digit != 10)
+            {
+                Console.WriteLine("The final ISBN number is:");
+                return (ISBN + extra_digit);
+            }
             else
-                return isbn[9] == (char)('0' + remainder);
+            {
+                Console.WriteLine("The final ISBN number is:");
+                return (ISBN + "x");    //Avoiding add two extra digits in ISBN number.   
+            }
         }
     }
 }
